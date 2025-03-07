@@ -1,7 +1,9 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Input } from "../ui/input";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export const SigninForm = () => {
   const router = useRouter();
@@ -11,7 +13,7 @@ export const SigninForm = () => {
     password: "",
   });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -21,7 +23,7 @@ export const SigninForm = () => {
 
   return (
     <>
-      <input
+      <Input
         name="email"
         type="email"
         placeholder="Digite seu e-mail"
@@ -29,7 +31,7 @@ export const SigninForm = () => {
         onChange={handleChange}
       />
 
-      <input
+      <Input
         name="password"
         type="password"
         placeholder="Digite sua senha"
