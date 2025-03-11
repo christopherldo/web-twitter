@@ -16,6 +16,7 @@ interface InputProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   filled?: boolean;
   icon?: IconDefinition;
+  onEnter?: () => void;
 }
 export const Input = ({
   name,
@@ -25,8 +26,15 @@ export const Input = ({
   onChange,
   filled,
   icon,
+  onEnter,
 }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter" && onEnter) {
+      onEnter();
+    }
+  };
 
   return (
     <div
@@ -44,6 +52,7 @@ export const Input = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange && onChange}
+        onKeyUp={handleKeyUp}
       />
       {type === "password" && (
         <FontAwesomeIcon
