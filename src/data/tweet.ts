@@ -4,7 +4,7 @@ import { user } from "./user";
 export const tweet: Tweet = {
   id: 123,
   user: user,
-  body: "Outro dia Magico",
+  body: "Outro dia mágico",
   image:
     "https://images.wondershare.com/repairit/aticle/2021/08/twitter-header-photo-issues-1.jpg",
   likeCount: 523,
