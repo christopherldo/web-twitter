@@ -23,9 +23,9 @@ export const TweetPost = () => {
         />
       </div>
       <div className="flex-1">
-        <div
-          className="inline-flex min-h-14 outline-none text-lg text-white empty:before:text-gray-500 empty:before:content-[attr(data-placeholder)]"
-          contentEditable
+        <span
+          className="inline-flex min-h-14 outline-none text-lg text-white cursor-text break-all w-full empty:before:text-gray-500 empty:before:content-[attr(data-placeholder)]"
+          contentEditable="plaintext-only"
           role="textbox"
           data-placeholder="O que está acontecendo?"
         />
