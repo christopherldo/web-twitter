@@ -20,7 +20,7 @@ export const RecommendationItem = ({ user }: RecommendationItemProps) => {
   return (
     <div className="flex items-center">
       <div className="size-10 mr-2 rounded-full overflow-hidden">
-        <Link href={`/${user.slug}`}>
+        <Link href={`/${user.slug.toLowerCase()}`}>
           <Image
             src={user.avatar}
             alt={user.name}
@@ -31,7 +31,7 @@ export const RecommendationItem = ({ user }: RecommendationItemProps) => {
         </Link>
       </div>
       <div className="flex-1 overflow-hidden">
-        <Link href={`/${user.slug}`} className="block truncate">
+        <Link href={`/${user.slug.toLowerCase()}`} className="block truncate">
           {user.name}
         </Link>
         <div className="truncate text-sm text-gray-400">@{user.slug}</div>

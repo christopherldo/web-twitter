@@ -5,11 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Button } from "@/components/ui/button";
 import { GeneralHeader } from "@/components/ui/general-header";
+import { ProfileFeed } from "@/components/profile/profile-feed";
 
 import { user } from "@/data/user";
 
 export default function Page() {
-  const isMe = false;
+  const isMe = true;
 
   return (
     <div>
@@ -32,7 +33,7 @@ export default function Page() {
           />
           <div className="w-32">
             {isMe ? (
-              <Link href={`/${user.slug}/edit`}>
+              <Link href={`/${user.slug.toLowerCase()}/edit`}>
                 <Button label="Editar Perfil" size="medium" />
               </Link>
             ) : (
@@ -62,6 +63,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <ProfileFeed />
     </div>
   );
 }

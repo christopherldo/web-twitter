@@ -7,7 +7,7 @@ export const NavMyProfile = () => {
   return (
     <div className="flex items-center">
       <div className="size-10 mr-2 rounded-full overflow-y-hidden">
-        <Link href={`/${user.slug}`}>
+        <Link href={`/${user.slug.toLowerCase()}`}>
           <Image
             src={user.avatar}
             alt={user.name}

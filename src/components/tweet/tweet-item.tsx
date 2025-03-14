@@ -28,7 +28,7 @@ export const TweetItem = ({ tweet }: TweetItemProps) => {
   return (
     <div className="flex gap-2 p-6 border-b-2 border-gray-900">
       <div>
-        <Link href={`/${tweet.user.slug}`}>
+        <Link href={`/${tweet.user.slug.toLowerCase()}`}>
           <Image
             src={tweet.user.avatar}
             alt={tweet.user.name}
