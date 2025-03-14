@@ -18,7 +18,7 @@ interface InputProps {
   icon?: IconDefinition;
   onEnter?: () => void;
   id?: string;
-  readOnly: boolean;
+  readOnly?: boolean;
 }
 export const Input = ({
   name,
