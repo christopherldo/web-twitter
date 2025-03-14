@@ -12,6 +12,8 @@ import {
 
 import { Tweet } from "@/models/Tweet";
 
+import { formatRelativeTime } from "@/utils/format-relative";
+
 interface TweetItemProps {
   tweet: Tweet;
 }
@@ -43,7 +45,9 @@ export const TweetItem = ({ tweet }: TweetItemProps) => {
               {tweet.user.name}
             </Link>
           </div>
-          <div className="text-xs text-gray-500">@{tweet.user.slug}</div>
+          <div className="text-xs text-gray-500">
+            @{tweet.user.slug} - {formatRelativeTime(tweet.dataPost)}
+          </div>
         </div>
         <div className="py-4 text-lg">{tweet.body}</div>
         {tweet.image && (
