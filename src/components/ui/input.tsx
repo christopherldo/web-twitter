@@ -17,6 +17,8 @@ interface InputProps {
   filled?: boolean;
   icon?: IconDefinition;
   onEnter?: () => void;
+  id?: string;
+  readOnly: boolean;
 }
 export const Input = ({
   name,
@@ -27,6 +29,8 @@ export const Input = ({
   filled,
   icon,
   onEnter,
+  id,
+  readOnly,
 }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -46,6 +50,7 @@ export const Input = ({
         <FontAwesomeIcon icon={icon} className="ml-4 size-6 text-gray-500" />
       )}
       <input
+        id={id}
         className="flex-1 outline-none bg-transparent h-full px-4"
         name={name}
         type={type === "password" && showPassword ? "text" : type}
@@ -53,6 +58,7 @@ export const Input = ({
         value={value}
         onChange={onChange && onChange}
         onKeyUp={handleKeyUp}
+        readOnly={readOnly}
       />
       {type === "password" && (
         <FontAwesomeIcon
