@@ -7,12 +7,13 @@ import { GeneralHeader } from "@/components/ui/general-header";
 import { SearchInput } from "@/components/ui/search-input";
 
 interface PageProps {
-  searchParams: {
+  searchParams: Promise<{
     q: string | undefined;
-  };
+  }>;
 }
 
-export default function Page({ searchParams }: PageProps) {
+export default async function Page(props: PageProps) {
+  const searchParams = await props.searchParams;
   if (!searchParams.q) redirect("/");
 
   return (

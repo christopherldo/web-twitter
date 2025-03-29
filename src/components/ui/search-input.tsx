@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -20,11 +20,15 @@ export const SearchInput = ({
 
   const [searchInput, setSearchInput] = useState(defaultValue || "");
 
+  useEffect(() => {
+    setSearchInput(defaultValue || "");
+  }, [defaultValue]);
+
   const handleSearchEnter = () => {
     if (searchInput) router.push(`/search?q=${searchInput}`);
   };
 
-  if (pathname === "search" && hideOnSearch) return null;
+  if (pathname === "/search" && hideOnSearch) return null;
 
   return (
     <Input
