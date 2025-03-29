@@ -7,6 +7,7 @@ import { user } from "@/data/user";
 import { GeneralHeader } from "@/components/ui/general-header";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function Page() {
   const isMe = true;
@@ -57,6 +58,11 @@ export default function Page() {
         </label>
         <label htmlFor="bio">
           <p className="text-lg text-gray-500">Bio</p>
+          <Textarea
+            placeholder="Descreva você mesmo"
+            rows={4}
+            value={user.bio}
+          />
         </label>
         <label htmlFor="link">
           <p className="text-lg text-gray-500">Link</p>
