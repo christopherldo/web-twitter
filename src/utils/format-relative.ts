@@ -1,5 +1,3 @@
-"use client";
-
 export const formatRelativeTime = (date: Date) => {
   const now = Date.now();
   const diffInMilliseconds = date.getTime() - now;

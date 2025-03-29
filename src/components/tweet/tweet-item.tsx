@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,14 +16,20 @@ import { formatRelativeTime } from "@/utils/format-relative";
 
 interface TweetItemProps {
   tweet: Tweet;
+  hideComments?: boolean;
 }
 
-export const TweetItem = ({ tweet }: TweetItemProps) => {
+export const TweetItem = ({ tweet, hideComments }: TweetItemProps) => {
   const [liked, setLiked] = useState(tweet.liked);
+  const [formattedTime, setFormattedTime] = useState("");
 
   const handleLikeButton = () => {
     setLiked((prev) => !prev);
   };
+
+  useEffect(() => {
+    setFormattedTime(formatRelativeTime(tweet.dataPost));
+  }, []);
 
   return (
     <div className="flex gap-2 p-6 border-b-2 border-gray-900">
@@ -46,7 +52,7 @@ export const TweetItem = ({ tweet }: TweetItemProps) => {
             </Link>
           </div>
           <div className="text-xs text-gray-500">
-            @{tweet.user.slug} - {formatRelativeTime(tweet.dataPost)}
+            @{tweet.user.slug} - {formattedTime}
           </div>
         </div>
         <div className="py-4 text-lg">{tweet.body}</div>
@@ -62,14 +68,16 @@ export const TweetItem = ({ tweet }: TweetItemProps) => {
           </div>
         )}
         <div className="flex mt-6 text-gray-500">
-          <div className="flex-1">
-            <Link href={`/tweet/${tweet.id}`}>
-              <div className="inline-flex items-center gap-2 cursor-pointer">
-                <FontAwesomeIcon icon={faComment} className="size-6" />
-                <div className="text-lg">{tweet.commentCount}</div>
-              </div>
-            </Link>
-          </div>
+          {!hideComments && (
+            <div className="flex-1">
+              <Link href={`/tweet/${tweet.id}`}>
+                <div className="inline-flex items-center gap-2 cursor-pointer">
+                  <FontAwesomeIcon icon={faComment} className="size-6" />
+                  <div className="text-lg">{tweet.commentCount}</div>
+                </div>
+              </Link>
+            </div>
+          )}
           <div className="flex-1">
             <div className="inline-flex items-center gap-2 cursor-pointer">
               <FontAwesomeIcon icon={faRetweet} className="size-6" />

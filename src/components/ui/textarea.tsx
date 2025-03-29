@@ -12,6 +12,7 @@ export const Textarea = ({ placeholder, rows, value }: TextareaProps) => {
         placeholder={placeholder}
         value={value}
         rows={rows}
+        readOnly
       ></textarea>
     </div>
   );
