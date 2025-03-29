@@ -1,8 +1,10 @@
+import { redirect } from "next/navigation";
+
+import { tweet } from "@/data/tweet";
+
 import { TweetItem } from "@/components/tweet/tweet-item";
 import { GeneralHeader } from "@/components/ui/general-header";
 import { SearchInput } from "@/components/ui/search-input";
-import { tweet } from "@/data/tweet";
-import { redirect } from "next/navigation";
 
 interface PageProps {
   searchParams: {
